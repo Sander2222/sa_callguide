@@ -11,9 +11,11 @@ AddEventHandler('callguide:NotifyTeam', function()
 
     for k, playerid in pairs(GetPlayers()) do
         local xPlayers = ESX.GetPlayerFromId(playerid)
-        
-        if xPlayers.getGroup() =='mod' or xPlayers.getGroup() == 'admin' or xPlayers.getGroup() == 'superadmin' then
-            xPlayers.showNotification(Language['PlayerAsked'] ..xPlayer.getName())
+        for i, v in ipairs(Config.Groups) do
+            print(v)
+            if xPlayers.getGroup() == v then
+                xPlayers.showNotification(Language['PlayerAsked'] ..xPlayer.getName())
+            end
         end
-    end 
- end)    
+    end
+ end)

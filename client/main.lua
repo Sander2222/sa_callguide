@@ -41,7 +41,7 @@ Citizen.CreateThread(function()
 		if IsAt then
             ESX.ShowHelpNotification(Language['PressButton'])
             if IsControlPressed(0, Config.Button) then --E
-                TriggerServerEvent('callguide:NotifyTeam')
+                TriggerServerEvent('sa_callguide:NotifyTeam')
                 ESX.ShowNotification(Language['CalledAdmin'])
                 ESX.ShowNotification(Language['WaitTime'] ..Config.WaitForTeam.. Language['Minutes'])
                 Wait(Config.WaitForTeam * 60000)

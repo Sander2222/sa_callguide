@@ -2,9 +2,9 @@
 fx_version 'cerulean'
 games { 'gta5' }
 
-author 'schnick schnack'
-description 'lies den Scriptnamen du affe'
-version '187'
+author 'Sander#2211'
+description 'Call an Teammember for ingame whitelist'
+version '1.0.0'
 
 client_scripts {
     'client/main.lua',

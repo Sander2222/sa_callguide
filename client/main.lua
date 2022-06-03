@@ -1,5 +1,7 @@
 ESX = nil
 local isInMarker2 = false
+local IsClose = false 
+local IsAt = false 
 
 Citizen.CreateThread(function()
     while ESX == nil do
@@ -10,17 +12,33 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        Wait(1)
-        local PlayerCoords  = GetEntityCoords(PlayerPedId())
+        Wait(850)
 
-            --local dist = GetDistanceBetweenCoords(PlayerCoords, CallCoords.x, CallCoords.y, CallCoords.z, - 1, 331, true)
+        IsClose = false
+		IsAt = false
 
-            if #(PlayerCoords - vector3(Config.CallCoords.x, Config.CallCoords.y, Config.CallCoords.z)) < 2  then
-                isInMarker2  = true
-            else
-                isInMarker2 = false
+            local dist = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), vector3(Config.CallCoords.x, Config.CallCoords.y, Config.CallCoords.z))
+
+            if dist <= Config.EnterDrawMarker then
+                IsClose = true
+                IsAt = true
+                CurrentStore = value
+            elseif dist <= Config.DrakMarker then
+                IsClose = true
+                CurrentStore = value
             end
-        if isInMarker2 then
+    end
+end)
+
+Citizen.CreateThread(function()
+    while true do
+        Wait(1)
+		if  not IsClose then
+			Wait(850)
+        else
+            DrawMarker(1, Config.CallCoords.x, Config.CallCoords.y, Config.CallCoords.z - 1, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 2.0, 2.0, 1.0, 3, 254, 190, 255, false, true, 2, false, false, false, false)
+        end
+		if IsAt then
             ESX.ShowHelpNotification(Language['PressButton'])
             if IsControlPressed(0, Config.Button) then --E
                 TriggerServerEvent('callguide:NotifyTeam')
@@ -28,13 +46,6 @@ Citizen.CreateThread(function()
                 ESX.ShowNotification(Language['WaitTime'] ..Config.WaitForTeam.. Language['Minutes'])
                 Wait(Config.WaitForTeam * 60000)
             end
-        end
-    end
-end)
-
-Citizen.CreateThread(function()
-    while true do
-        Wait(1)
-        DrawMarker(1, Config.CallCoords.x, Config.CallCoords.y, Config.CallCoords.z - 1, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 2.0, 2.0, 1.0, 3, 254, 190, 255, false, true, 2, false, false, false, false)
+		end
     end
 end)

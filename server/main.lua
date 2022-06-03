@@ -4,8 +4,8 @@ TriggerEvent('esx:getSharedObject', function(obj)
 	ESX = obj
 end)
 
-RegisterNetEvent('callguide:NotifyTeam')
-AddEventHandler('callguide:NotifyTeam', function()
+RegisterNetEvent('sa_callguide:NotifyTeam')
+AddEventHandler('sa_callguide:NotifyTeam', function()
     local _source = source
     local xPlayer = ESX.GetPlayerFromId(_source)
 

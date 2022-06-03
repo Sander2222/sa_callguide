@@ -17,11 +17,9 @@ Citizen.CreateThread(function()
 
             if #(PlayerCoords - vector3(Config.CallCoords.x, Config.CallCoords.y, Config.CallCoords.z)) < 2  then
                 isInMarker2  = true
-                print(isInMarker2)
             else
                 isInMarker2 = false
             end
-        print(isInMarker2)
         if isInMarker2 then
             ESX.ShowHelpNotification(Language['PressButton'])
             if IsControlPressed(0, Config.Button) then --E
@@ -37,6 +35,6 @@ end)
 Citizen.CreateThread(function()
     while true do
         Wait(1)
-            DrawMarker(1, Config.CallCoords.x, Config.CallCoords.y, Config.CallCoords.z - 1, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 2.0, 2.0, 1.0, 3, 254, 190, 255, false, true, 2, false, false, false, false)
+        DrawMarker(1, Config.CallCoords.x, Config.CallCoords.y, Config.CallCoords.z - 1, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 2.0, 2.0, 1.0, 3, 254, 190, 255, false, true, 2, false, false, false, false)
     end
 end)

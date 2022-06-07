@@ -1,5 +1,5 @@
 # sa_callguide
-
+Call a teammember for ingame whitelist
 
 
 **Description**

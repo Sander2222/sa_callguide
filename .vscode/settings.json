@@ -1,0 +1,9 @@
+{
+    "Lua.diagnostics.globals": [
+        "Citizen",
+        "GetDistanceBetweenCoords",
+        "PerformHttpRequest",
+        "json",
+        "sendToDiscord"
+    ]
+}

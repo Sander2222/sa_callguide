@@ -8,10 +8,10 @@ version '1.0.0'
 
 client_scripts {
     'client/main.lua',
-    'config.lua'
+    'cl_config.lua'
 }
 
 server_scripts {
     'server/main.lua',
-    'config.lua'
+    'sv_config.lua'
 }

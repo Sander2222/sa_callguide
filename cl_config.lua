@@ -5,17 +5,12 @@ Configcl.Button = 38 -- Button is E for now (https://docs.fivem.net/docs/game-re
 Configcl.WaitForTeam = 3 -- This time must wait the player to call a teammeber after called a teammember (in Minutes)
 Configcl.DrakMarker = 10.0 --this is the distance when the DrawMarker should show 
 Configcl.EnterDrawMarker = 2.0 --this is the distance when the Player can press the input button to use this script
-Configcl.Groups = { --All of this  groups get a message when i player use this script  
-    'mod',
-    'admin',
-    'superadmin'
-}
+
 
 
 Language = {
     ['PressButton'] = 'Press ~INPUT_CONTEXT~ to call a teammember.',
     ['CalledAdmin'] = 'You called a admin for ingame whitelist.',
-    ['PlayerAsked'] = 'This player asked for a teammember: ',
     ['WaitTime'] = 'You need to wait this time befor you can call a nother: ',
     ['Minutes'] = ' minutes'
 }

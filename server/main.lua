@@ -10,14 +10,14 @@ AddEventHandler('sa_callguide:NotifyTeam', function()
     local xPlayer = ESX.GetPlayerFromId(_source)
 
     if Configsv.ActiveWebhook then
-        sendToDiscord(Language['WebhookMessage']..xPlayer.getName())
+        sendToDiscord(Configsv.Language['WebhookMessage']..xPlayer.getName())
     end
 
     for k, playerid in pairs(GetPlayers()) do
         local xPlayers = ESX.GetPlayerFromId(playerid)
-        for i, v in ipairs(Configcl.Groups) do
+        for i, v in ipairs(Configsv.Groups) do
             if xPlayers.getGroup() == v then
-                xPlayers.showNotification(Language['PlayerAsked'] ..xPlayer.getName())
+                xPlayers.showNotification(Configsv.Language['PlayerAsked'] ..xPlayer.getName())
             end
         end
     end

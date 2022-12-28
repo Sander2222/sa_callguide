@@ -8,16 +8,24 @@ RegisterNetEvent('sa_callguide:NotifyTeam')
 AddEventHandler('sa_callguide:NotifyTeam', function()
     local _source = source
     local xPlayer = ESX.GetPlayerFromId(_source)
-
-    if Configsv.ActiveWebhook then
-        sendToDiscord(Configsv.Language['WebhookMessage']..xPlayer.getName())
-    end
+    local TeamMember = 0
 
     for k, playerid in pairs(GetPlayers()) do
         local xPlayers = ESX.GetPlayerFromId(playerid)
         for i, v in ipairs(Configsv.Groups) do
             if xPlayers.getGroup() == v then
-                xPlayers.showNotification(Configsv.Language['PlayerAsked'] ..xPlayer.getName())
+                TeamMember = TeamMember + 1
+            end
+        end
+        if TeamMember > 0 then
+            xPlayers.showNotification(Configsv.Language['PlayerAsked'] ..xPlayer.getName())
+            if Configsv.ActiveWebhook then
+                sendToDiscord(Configsv.Language['WebhookMessage']..xPlayer.getName())
+            end
+        else 
+            xPlayer.showNotification(Configsv.Language['ThereIsNoTeam'])
+            if Configsv.ActiveWebhook then
+                sendToDiscord(Configsv.Language['WebhookMessageNoTeammember']..xPlayer.getName())
             end
         end
     end

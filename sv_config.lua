@@ -14,5 +14,7 @@ Configsv.Groups = { --All of this  groups get a message when i player use this s
 
 Configsv.Language = {
     ['WebhookMessage'] = 'The player called an admin: ',
+    ['WebhookMessageNoTeammember'] = 'The player called an admin, but on teammember is online: ',
+    ['ThereIsNoTeam'] = 'At the moment no teammember is online',
     ['PlayerAsked'] = 'This player asked for a teammember: '
 }
